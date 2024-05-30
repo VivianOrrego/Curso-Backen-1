@@ -1,0 +1,13 @@
+{{#if products.length}}
+    {{#each products}}
+        <p>{{title}}</p>
+        <p>{{code}}</p>
+        <p>{{description}}</p>
+        <p>{{price}}</p>
+        <p>{{stock}}</p>
+        <p>{{category}}</p>
+        <img src={{thumbnails}} width="150px" height="auto" alt="">
+    {{/each}}
+{{else}}
+<p>No hay productos</p>
+{{/if}}

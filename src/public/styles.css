@@ -1,0 +1,217 @@
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    padding: 0%;
+    background: linear-gradient(-45deg, #af2af1 0%, #000000 100%);
+    min-height: 100vh;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 15px;
+    min-height: 100vh;
+    width: 100%;
+
+
+    .header {
+        width: 100%;
+        margin-top: 0;
+        
+
+        .navbar {
+            display: flex;
+            justify-content: end;
+            width: 100%;
+            margin-top: 0;
+            
+
+            .ulnav {
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                margin-right: 30px;
+                margin-top: 0;
+
+                li a {
+                    text-decoration: none;
+                    color: #fff;
+                    padding: 6px;
+                    margin-right: 5px;
+                    margin-left: 5px;
+                    border: 1px solid #fff;
+                    border-radius: 9px;
+                }
+
+                li a:hover {
+                    font-weight: 300;
+                    background-color: #000000bd;
+                    color: #d8d0ed;
+                    box-shadow: 0 3px 15px rgb(0, 0, 0);
+                }
+            }
+        }
+    }
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: right;
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+    background-color: #e9ccf7;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+    
+    h2{
+        color: #4d1deb;
+    }
+
+    h3 {
+        font-size: 18px;
+        margin: 8px 0;
+        color: #000;
+    }
+
+    p {
+        font-size: 15px;
+        margin: 4px 0;
+        color: #000;
+    }
+
+    .delete-btn {
+        background-color: #714af3;
+        color: #000;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: fit-content;
+        margin-top: 5px;
+        
+    }
+    
+    .delete-btn:hover {
+        background-color: #cc0000;
+        box-shadow: 0 2px 20px rgb(0, 0, 0);
+    }
+    
+
+
+}
+
+.card:hover {
+    box-shadow: 0 2px 20px rgb(93, 14, 221);
+}
+
+.rtproducts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .formTitle{
+        color: #4d1deb;
+    }
+
+        .formContainer {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: left;
+        border: 1px solid #000000;
+        border-radius: 10px;
+        width: fit-content;
+        padding: 10px;
+        background-color: #e9ccf7;
+    
+            .prodForm {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+
+            
+                .form-group {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-bottom: 16px;
+    
+    
+                    label {
+                        width: fit-content;
+                        margin-right: 16px;
+                        color: #000000;
+                    }
+
+                        
+                    input[type="text"],
+                    input[type="number"] {
+                        flex: 1;
+                        padding: 8px;
+                        border: 1px solid #4d1deb;
+                        border-radius: 4px;
+                    }
+    
+            }
+    
+            button {
+                background-color: #4d1deb;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+    
+            button:hover {
+                background-color: #2500f7f7;
+            }
+        }
+    }
+    
+    .formContainer:hover {
+        box-shadow: 0 1px 5px rgb(5, 1, 255);
+    }
+}
+
+

@@ -1,0 +1,49 @@
+<main class="rtproducts">
+  <h1> Vista de Productos en Tiempo Real</h1>
+
+  <div id="card-container" class="card-container">
+
+  </div>
+
+  <div class="formContainer">
+    <h2 class="formTitle">Agregar Nuevo Producto</h2>
+    <div id="form-container" class="formContainer">
+    <form id="form" class="prodForm">
+        <div class="form-group">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Descripción:</label>
+            <input type="text" id="description" name="description" required>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Categoría:</label>
+            <input type="text" id="category" name="category" required>
+        </div>
+
+        <div class="form-group">
+            <label for="code">Código:</label>
+            <input type="text" id="code" name="code" required>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Precio:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+        </div>
+
+        <div class="form-group">
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" required>
+        </div>
+
+        <button id="btn" type="submit">Guardar Producto</button>
+    </form>
+</div>
+
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/index.js"></script>

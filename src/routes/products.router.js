@@ -82,4 +82,15 @@ router.delete("/:idProduct", async (req, res) => {
   }
 });
 
+//
+router.delete("/:idProduct", async (req, res) => {
+  try {
+      const { idProduct } = req.params;
+      const prodToDelete = await productManager.deleteProduct(idProduct);
+      !prodToDelete ? res.status(404).json({ error: "Product not found" }) : res.status(200).json(`product ${idProduct} deleted`);
+  } catch (error) {
+      res.status(500).json({ error: error.message });
+  }
+})
+
 export default router

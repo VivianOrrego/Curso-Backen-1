@@ -1,0 +1,22 @@
+[
+	{
+		"id": "08370d70-76d5-475f-ae8e-49303409ce7c",
+		"status": true,
+		"title": "camisa",
+		"description": "azul",
+		"category": "Niño",
+		"code": "01",
+		"price": 34,
+		"stock": 45
+	},
+	{
+		"id": "74e7b172-2e57-4099-a7b8-313603aa66df",
+		"status": true,
+		"title": "Gato",
+		"description": "Intenso",
+		"category": "Niño",
+		"code": "02",
+		"price": 89,
+		"stock": 1
+	}
+]

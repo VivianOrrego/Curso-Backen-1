@@ -1,85 +1,83 @@
+// imports
+
 import fs from "fs";
-import { v4 as uuidv4 } from "uuid";
-
-export default class ProductsManager {
-    constructor(path) {
-        this.path = path;
-    }
-
-    async getProducts(limit) {
-        try {
-            if (fs.existsSync(this.path)) {
-                const products = await fs.promises.readFile(this.path, 'utf-8');
-                const parsedProducts = JSON.parse(products)
-                if(limit){
-                    return parsedProducts.slice(0, limit);
-                }
-                return parsedProducts;
-            } else return [];
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    async createProduct(obj) {
-        try {
-            const product = { 
-                id: uuidv4(), 
-                status: true, 
-                ...obj 
-            };
-            const productFile = await this.getProducts();
-            const productExist = productFile.find((u) => u.title === product.title);
-            if (productExist) return console.log(colors.red("Error: El producto ya existe")), "El producto ya existe";
-            if (product.title === "" || product.description === "" || product.price <= 0 || product.code === "" ||  product.stock <= 0 || product.category === "" )
-                return console.log("Todos los campos son obligatorios"), null;
-            else productFile.push(product);            
-            await fs.promises.writeFile(this.path, JSON.stringify(productFile));
-            return product;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    async updateProduct(id, obj) {
-        try {
-            const productFile = await this.getProducts();
-            let productExist = await this.getProductById(id);
-            console.log(productExist)
-            if (!productExist) return null;
-            productExist = { ...productExist, ...obj };
-            const newArray = productFile.filter((u) => u.id !== id);
-            newArray.push(productExist);
-            await fs.promises.writeFile(this.path, JSON.stringify(newArray));
-            return productExist;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    async getProductById(id) {
-        try {
-            const productsFile = await this.getProducts();
-            const productExist = productsFile.find((u) => u.id === id);
-            if (!productExist) return "Product not found";
-            return productExist;
-        } catch (error) {
-            console.log(error);
-        }
-    }
+import { v4 as uuid } from "uuid";
 
 
-    async deleteProduct(id) {
-        try {
-            const productsFile = await this.getProducts();
-            if (productsFile.length > 0) {
-                const productExist = await this.getProductById(id);
-                if (!productExist) return null;
-                const newArray = productsFile.filter((u) => u.id !== id);
-                await fs.promises.writeFile(this.path, JSON.stringify(newArray));
-                return productExist;
-            } else return "Product not found";
-        } catch (error) {
-            console.log(error);
-        }
+// Definicion de clase
+class ProducstManager {
+  constructor(path) {
+    this.path = path;
+  }
+
+  // métodos
+
+  async getProducts(querylimit) {
+    try {
+      if (fs.existsSync(this.path)) {
+        const products = await fs.promises.readFile(this.path, "utf8");
+        return querylimit ? JSON.parse(products).slice(0, Math.max(0, querylimit)) : JSON.parse(products); 
+      } else return [];
+    } catch (error) {
+      console.error(error);
     }
+  }
+
+  async addNewProduct(obj) {
+    try {
+      const newProduct = {
+        id: uuid(),
+        status: true,
+        ...obj,
+      };
+      const products = await this.getProducts();
+      products.push(newProduct);
+      await fs.promises.writeFile(this.path,JSON.stringify(products, null, "\t"));
+      console.log("producto agregado");
+      return newProduct;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getProductById(id) {
+    try {
+      const products = await this.getProducts();
+      const productListed = products.find((product) => product.id === id);
+      return productListed || null;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async modifyProduct(id, obj) {
+    try {
+      const products = await this.getProducts();
+      let productListed = products.find((product) => product.id === id);
+      if (productListed) {
+        productListed = { ...productListed, ...obj };
+      } else return null;
+      const productsUpdated = products.filter((product) => product.id !== id);
+      productsUpdated.push(productListed);
+      await fs.promises.writeFile(this.path,JSON.stringify(productsUpdated, null, "\t"));
+      return productListed;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async deleteProduct(id) {
+    try {
+      const products = await this.getProducts();
+      const productListed = products.find((product) => product.id === id);
+      if (!productListed) return null;
+      const productsUpdated = products.filter((product) => product.id !== id);
+      await fs.promises.writeFile(this.path,JSON.stringify(productsUpdated, null, "\t"));
+      return productListed;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
+
+export default ProducstManager;

@@ -1,0 +1,20 @@
+<main class="home">
+  <h1> Vista de Productos</h1>
+
+
+  <div class="card-container">
+    {{#if products.length}}
+    {{#each products}}
+      <div class="card">        
+        <h2>{{this.title}}</h2>
+        <p>{{this.description}}</p>
+        <div><p>${{this.price}} 
+        <p>Stock: {{this.stock}}</p></div>
+        </div>
+    {{/each}}
+    {{else}}
+    <h2>No hay productos para mostrar!</h2>
+{{/if}}
+  </div>
+
+</main>
